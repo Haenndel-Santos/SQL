@@ -1,0 +1,48 @@
+Working with a database provided by Kaggle at:
+https://www.kaggle.com/datasets/nasa/astronaut-yearbook?resource=download.
+
+CREATE TABLE astronauts
+(
+   Name                VARCHAR(100),
+   Year                INT,
+   GroupNum            INT,
+   Status              VARCHAR(100),
+   Birth_Date*         VARCHAR(100),
+   Birth_Place*        VARCHAR(100),
+   Gender              VARCHAR(100),
+   Alma_Mater          VARCHAR(100),
+   Undergraduate_Major VARCHAR(100),
+   Graduate_Major      VARCHAR(100),
+   Military_Rank       VARCHAR(100),
+   Military_Branch     VARCHAR(100),
+   Space_Flights       INT,
+   Space_Flight_hr     INT,
+   Space_Walks         INT,
+   Space_Walks_hr      INT,
+   Missions            VARCHAR(100),
+   Death_Date*         VARCHAR(100), 
+   Death_Mission       VARCHAR(100)
+)
+*The dataset has the columns Birth_Date, Birth_Place, Death_Date as STRINGS, for this reason, i used VARCHAR instead of DATE or DATETIME.
+
+
+SELECT * 
+FROM astronauts
+ORDER BY Year
+
+
+SELECT year, NAME, gender, Space_Flights, Space_Flight_hr, Space_Walks, Space_Walks_hr
+FROM astronauts 
+WHERE Space_Walks > 0
+ORDER BY Space_Walks_hr DESC
+
+SELECT GENDER, SUM (Space_Flights) as SumSpaceFlights, SUM (Space_Flight_hr) as SumSpaceFlightsHr, SUM(SPACE_WALKS) AS SumSpaceWalks, SUM(SPACE_WALKS_HR) as SumSpaceWalksHr
+FROM astronauts
+GROUP BY Gender
+
+SELECT  MAX (Space_Flights), MAX (Space_Flight_hr), MAX (SPACE_WALKS), MAX(SPACE_WALKS), AVG(Space_Flight_hr) AS AvgFlights_hr
+FROM astronauts
+
+SELECT Gender, COUNT(GENDER) AS CountGender
+FROM astronauts
+GROUP BY GENDER
