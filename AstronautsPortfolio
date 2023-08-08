@@ -29,20 +29,37 @@ CREATE TABLE astronauts
 SELECT * 
 FROM astronauts
 ORDER BY Year
-
+-------------------------------------
 
 SELECT year, NAME, gender, Space_Flights, Space_Flight_hr, Space_Walks, Space_Walks_hr
 FROM astronauts 
 WHERE Space_Walks > 0
 ORDER BY Space_Walks_hr DESC
-
+----------------------------------------
 SELECT GENDER, SUM (Space_Flights) as SumSpaceFlights, SUM (Space_Flight_hr) as SumSpaceFlightsHr, SUM(SPACE_WALKS) AS SumSpaceWalks, SUM(SPACE_WALKS_HR) as SumSpaceWalksHr
 FROM astronauts
 GROUP BY Gender
-
+---------------------------------------
 SELECT  MAX (Space_Flights), MAX (Space_Flight_hr), MAX (SPACE_WALKS), MAX(SPACE_WALKS), AVG(Space_Flight_hr) AS AvgFlights_hr
 FROM astronauts
-
+-----------------------------------------
 SELECT Gender, COUNT(GENDER) AS CountGender
+FROM astronauts
+GROUP BY GENDER
+------------------------------------------
+DROP TABLE IF EXISTS #temp_astronauts
+CREATE TABLE #temp_astronauts
+
+(Gender VARCHAR(100),
+SumSpaceFlights int,
+SumSpaceFlightsHr int,
+SumSpaceWalks int,
+SumSpaceWalksHr int)
+
+SELECT * 
+FROM #temp_astronauts
+
+INSERT INTO #temp_astronauts
+SELECT GENDER, SUM (Space_Flights), SUM (Space_Flight_hr), SUM(SPACE_WALKS), SUM(SPACE_WALKS_HR)
 FROM astronauts
 GROUP BY GENDER
