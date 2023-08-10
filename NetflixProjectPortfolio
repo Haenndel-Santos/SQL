@@ -1,4 +1,4 @@
-Working with a database provided from Netflix database stored at http://sqlfiddle.com/#!17/7dae0/16/0
+Engaging with a database sourced from the Netflix database hosted at http://sqlfiddle.com/#!17/7dae0/16/0.
 
 SELECT count(*) FROM "netflix_people";
 
