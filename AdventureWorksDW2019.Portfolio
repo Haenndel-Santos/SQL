@@ -1,4 +1,4 @@
-Working with a database provided by Microsoft at:
+Engaging with a database provided by Microsoft at:
 https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms#download-backup-files
   
 SELECT ProductKey, ProductAlternateKey, ProductSubcategoryKey,EnglishProductName, ListPrice
