@@ -61,3 +61,13 @@ FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 HAVING count(artist_name) > 1 
 ORDER BY tempo DESC;
+
+WITH temp_table AS (
+SELECT artist_name,POPULARITY, AVG(popularity) AS AVG
+FROM Spotifydata 
+GROUP BY artist_name
+)
+SELECT artist_name, AVG, 'TOP_STAR' AS TAG
+FROM temp_table
+WHERE AVG >= 90
+ORDER BY AVG DESC
